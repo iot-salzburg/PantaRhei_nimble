@@ -26,3 +26,9 @@ Integrate PantaRhei data to a database as it could have been negotiated through 
         final String BOOTSTRAP_SERVERS_CONFIG = "192.168.48.71:9092,192.168.48.72:9092,192.168.48.73:9092,192.168.48.74:9092,192.168.48.75:9092";
 ```
 
+### Useful commands to extract data from the DB:
+
+```sql
+sudo -u postgres psql -d nimbledc -c "SELECT count(*) FROM data;"
+sudo -u postgres psql -d nimbledc -c "SELECT * FROM data WHERE timestamp >= CAST(NOW()- interval '1 hour' AS text) AND id=69 ORDER BY timestamp DESC;"
+```
